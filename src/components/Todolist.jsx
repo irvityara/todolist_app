@@ -1,9 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 
-const TodoList = () => {
-
+function Todolist(){
     return (
-        <div className="containerList">
+        <div>
+            <div style={{ display: "grid", justifyContent: "center", alignItems: "center" }}>
+            <div className="filterBox">
+                <button className="filterButton">ALL</button>
+                <button className="filterButton">ACTIVE</button>
+                <button className="filterButton">COMPLETED</button>
+            </div>
             <div className="listBox">
                 <div className="checkBox">
                     <input type="checkbox" />
@@ -45,6 +50,7 @@ const TodoList = () => {
                     <button>Edit</button>
                     <button>X</button>
                 </div>
+            </div>
             </div>
         </div>
     )
