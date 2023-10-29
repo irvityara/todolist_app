@@ -1,7 +1,8 @@
+import React from "react";
 import { useSelector } from "react-redux";
 
-export default function Todolist() {
-    const { todos } = useSelector(state => state.todos)
+function Todolist() {
+    const { todos } = useSelector(state => state.todo)
 
     return (
         <div style={{display:"flex", alignItems:"center"}}>
@@ -13,7 +14,7 @@ export default function Todolist() {
                 </div>
             )})
         </div>
-
-        
     )
 }
+
+export default Todolist
