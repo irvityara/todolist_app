@@ -10,4 +10,4 @@ function todoReducer(state = initialState, action) {
     }
 }
 
-export default todoReducer
+export default todoReducer;
