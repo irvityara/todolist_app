@@ -1,6 +1,14 @@
 import React from "react";
+import { useSelector, useDispatch } from 'react-redux';
+import { addTodo, toggleTodo, editTodo, deleteTodo } from '../reducers/todoSlice';
 
-function Todolist(){
+const TodoList = () => {
+  const [newTodo, setNewTodo] = useState('');
+  const [editingTodo, setEditingTodo] = useState(null);
+  const [filter, setFilter] = useState('ALL'); // State untuk filter
+  const todos = useSelector((state) => state.todo.todos);
+  const dispatch = useDispatch();
+
     return (
         <div>
             <div style={{ display: "grid", justifyContent: "center", alignItems: "center" }}>
@@ -27,30 +35,16 @@ function Todolist(){
                 <div className="checkBox">
                     <input type="checkbox" />
                 </div>
-                <div className="listTodo">
-                    <span>
-                        Buy Egg
-                    </span>
+                    <div className="listTodo">
+                        {todos.map((todo) => (
+                            <div key={todo.id}>
+                                <span>{todo.value}</span>
+                                <button>Edit</button>
+                                <button>x</button>
+                            </div>
+                        ))}
+                    </div>
                 </div>
-                <div>
-                    <button>Edit</button>
-                    <button>X</button>
-                </div>
-            </div>
-            <div className="listBox">
-                <div className="checkBox">
-                    <input type="checkbox" />
-                </div>
-                <div className="listTodo">
-                    <span>
-                        Buy T-Shirt
-                    </span>
-                </div>
-                <div>
-                    <button>Edit</button>
-                    <button>X</button>
-                </div>
-            </div>
             </div>
         </div>
     )
