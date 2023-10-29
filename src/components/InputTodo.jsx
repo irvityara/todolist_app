@@ -2,15 +2,14 @@ import React from "react";
 
 function InputTodo() {
     return (
-        <div style={{display:"flex", gap:"30px"}}>
+        <div className="todoBox" style={{display:"flex", gap:"30px", justifyContent:"center", alignItems:"center", marginBottom:"40px"}}>
             <input
                 type="text"
                 placeholder="What to do"
-                value={newTodo}
-                onChange={(e) => setNewTodo(e.target.value)}
+                style={{padding:"8px"}}
             />
-            <div>
-                <button onClick={handleAddTodo}>
+            <div style={{alignItems:"center"}}>
+                <button className="addButton">
                     Add
                 </button>
             </div>

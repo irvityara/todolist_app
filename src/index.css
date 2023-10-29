@@ -1,0 +1,32 @@
+
+
+
+.containerList{
+  display:flex;
+  justify-Content:center;
+  align-Items:center;
+  background-Color:blue;
+}
+.addButton{
+  height: 35px;
+  width: 50px;
+  background-color: blue;
+  color: white;
+  border: none;
+  border-Radius: 5px;
+}
+.listBox{
+  display: flex;
+  width:300px;
+  height: 40px;
+  align-Items: center;
+  border: solid #333 1px;
+  padding:5px;
+  margin-Bottom:20px;
+}
+.checkBox{
+  width: 30px;
+}
+.listTodo{
+  width: 200px;
+}

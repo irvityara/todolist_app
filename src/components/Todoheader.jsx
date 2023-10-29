@@ -2,7 +2,7 @@ import React from "react";
 
 function Todoheader() {
     return (
-        <div>
+        <div style={{display:"flex", justifyContent:"center", alignItems:"center", marginTop:"80px", marginBottom:"80px"}}>
             <h1>What's the plan for today?</h1>
         </div>
     )

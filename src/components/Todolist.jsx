@@ -1,25 +1,51 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
-function Todolist() {
-    const [newTodo, setNewTodo] = useState('');
-    const [editingTodo, setEditingTodo] = useState(null);
-    const todos = useSelector((state) => state.todos);
-    const dispatch = useDispatch();
+const TodoList = () => {
 
     return (
-        <div style={{display:"flex", alignItems:"center"}}>
-            <div>
-                <ul>
-                    {todos.map((todo) => (
-                        <li key={todo.id}></li>
-                    ))}
-                </ul>
-            </div>
-            <div >
-                <button>Edit</button>
-                <button>X</button>
+        <div className="containerList">
+            <div className="listBox">
+                <div className="checkBox">
+                    <input type="checkbox" />
                 </div>
+                <div className="listTodo">
+                    <span>
+                        Buy Milk
+                    </span>
+                </div>
+                <div>
+                    <button>Edit</button>
+                    <button>X</button>
+                </div>
+            </div>
+            <div className="listBox">
+                <div className="checkBox">
+                    <input type="checkbox" />
+                </div>
+                <div className="listTodo">
+                    <span>
+                        Buy Egg
+                    </span>
+                </div>
+                <div>
+                    <button>Edit</button>
+                    <button>X</button>
+                </div>
+            </div>
+            <div className="listBox">
+                <div className="checkBox">
+                    <input type="checkbox" />
+                </div>
+                <div className="listTodo">
+                    <span>
+                        Buy T-Shirt
+                    </span>
+                </div>
+                <div>
+                    <button>Edit</button>
+                    <button>X</button>
+                </div>
+            </div>
         </div>
     )
 }
