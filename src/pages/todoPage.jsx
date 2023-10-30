@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { addTodos, searchTodo } from "../slice/todoSlice";
-import Todolist from "../components/todolist";
+import Todolist from "../components/Todolist";
 
 
 const TodoPage = () => {
