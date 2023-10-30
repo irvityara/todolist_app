@@ -1,12 +1,28 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
+import { addTodo, getTodo } from "../redux/reducers/todo-reducer";
 
-const TodoList = () => {
-  const [newTodo, setNewTodo] = useState('');
-  const [editingTodo, setEditingTodo] = useState(null);
-  const [filter, setFilter] = useState('ALL'); // State untuk filter
-  const todos = useSelector((state) => state.todo.todos);
-  const dispatch = useDispatch();
+
+function Todolist() {
+    const dispatch = useDispatch();
+    const { isLoading, todos } = useSelector((state) => state.todo);
+    const [input, setInput] = useState("")
+    
+    // console.log(isLoading, todos);
+
+    useEffect(() => {
+        dispatch(getTodo());
+    }, []);
+
+    const handleClick = (e) => {
+        e.preventDefault()
+        let newTodo = {
+            value: input,
+            status: false
+        }
+    
+        dispatch(addTodo(newTodo))
+    }
 
     return (
         <div>
@@ -34,7 +50,10 @@ const TodoList = () => {
                 <div className="checkBox">
                     <input type="checkbox" />
                 </div>
-                    <div className="listTodo">
+                    {isLoading ? (
+                        <div>loading...</div>
+                    ) : (
+                        <div className="listTodo">
                         {todos.map((todo) => (
                             <div key={todo.id}>
                                 <span>{todo.value}</span>
@@ -42,11 +61,12 @@ const TodoList = () => {
                                 <button>x</button>
                             </div>
                         ))}
-                    </div>
+                    </div>   
+                    )}
                 </div>
             </div>
         </div>
     )
 }
 
-export default Todolist
+export default Todolist;

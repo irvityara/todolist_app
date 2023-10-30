@@ -1,33 +1,54 @@
-const initialState = {
+const initialValue = {
     todos: [],
     isLoading: false,
     error:""
 }
 
-function todoReducer(state = initialState, action) {
-    switch (action.type) {
-        case "ADD_TODO":
-            return {
-                ...state,
-                todos: [...state.todos, action.payload],
-            };
-        case "DELETE_TODO":
-            return {
-                
-            };
-        case "UPDATE_TODO":
-            return {
-                
-            };
-        default:
-            return state;
+function todoReducer(state = initialValue, action) {
+    switch(action.type) {
+        case "START_FETCHING":
+          return {
+            ...state,
+            isLoading: true
+          }
+        case "SUCCESS_GET_TODO":
+          return {
+            ...state,
+            isLoading: false,
+            todos: action.payload
+          }
+        default: return state
+      }
     }
+
+    function startFetching() {
+        return {
+          type: "START_FETCHING"
+        }
+      }
+      
+      function successGetTodo(data) {
+        return {
+          type: "SUCCESS_GET_TODO",
+          payload: data
+        }
 }
-export function addTodo(input) {
-    return {
-        type: "ADD_TODO",
-        payload: input
+      
+export function getTodo() {
+    return async function (dispatch) {
+      dispatch(startFetching())
+  
+      const {data} = await axios("https://643e1624c72fda4a0bed5b7f.mockapi.io/todo")
+  
+      dispatch(successGetTodo(data))
     }
-}
+  }
+  
+  export const addTodo = (newTodo) => async (dispatch) => {
+    dispatch(startFetching())
+
+    await axios.post("https://643e1624c72fda4a0bed5b7f.mockapi.io/todo", newTodo)
+    dispatch(getTodo())
+  }
 
 export default todoReducer;
