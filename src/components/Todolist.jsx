@@ -7,7 +7,19 @@ import { editTodo, removeTodo } from "../slice/todoSlice";
 const Todolist = () => {
     const todos = useSelector((state) => state.todos.todos);
     const isLoading = useSelector((state) => state.todo);
+    const [filter, setFilter] = useState('ALL');
     const dispatch = useDispatch();
+
+
+    const filterTodo = (selectedFilter) => {
+        setFilter(selectedFilter);
+    };
+
+    const filteredTodos = filter === 'ALL' ? todos :
+        filter === 'ACTIVE' ? todos.filter((todo) => !todo.completed) :
+            filter === 'COMPLETE' ? todos.filter((todo) => todo.completed) :
+                todos;
+
 
     return (
         <div>

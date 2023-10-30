@@ -4,12 +4,10 @@ const initialState = {
   todos: [],
   filteredTodos: [],
 };
-const filteredTodos = filter === 'ALL' ? state.todos :
-    filter === 'ACTIVE' ? state.todos.filter((todo) => !todo.completed) :
-        filter === 'COMPLETE' ? state.todos.filter((todo) => todo.completed) :
-            state.todos;
+
 
 export const todoSlice = createSlice({
+
   name: "todos",
   initialState,
   reducers: {
@@ -22,19 +20,21 @@ export const todoSlice = createSlice({
     removeTodo: (state, action) => {
       state.todos = state.todos.filter((todo) => todo === action.payload.id);
     },
-    editTodo:(state, action) => {
-        const newTodo = {
+    editTodo: (state, action) => {
+        const editTodo = {
           content: action.payload.text,
         };
-        state.todos = [...state.todos, newTodo];
-      },
+        state.todos = [...state.todos, editTodo];
+    },
     searchTodo: (state, action) => {
       state.filteredTodos = state.todos.filter((todo) =>
         todo.content.startsWith(action.payload.search)
       );
     },
+    
   },
 });
+
 
 
 // Action creators are generated for each case reducer function
