@@ -2,11 +2,13 @@
 // import Todolist from "../components/todolist";
 
 
+
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 
 import { addTodos } from "../slice/todoSlice";
 import Todolist from "../components/todolist";
+
 
 
 const TodoPage = () => {
@@ -33,9 +35,9 @@ const TodoPage = () => {
     
               </div>
               <div className="filterBox">
-                  <button className="filterButton">ALL</button>
-                  <button className="filterButton">ACTIVE</button>
-                  <button className="filterButton">COMPLETED</button>
+                  <button onClick={() => dispatch(filteredTodos("ALL"))} className="filterButton">ALL</button>
+                  <button onClick={() => dispatch(filteredTodos("ACTIVE"))} className="filterButton">ACTIVE</button>
+                  <button onClick={() => dispatch(filteredTodos("COMPLETED"))}className="filterButton">COMPLETED</button>
               </div>
           <Todolist />
           </div>  

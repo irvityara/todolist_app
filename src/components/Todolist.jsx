@@ -1,16 +1,33 @@
 //context
 // import useTodos from "../hooks/useTodos";
 
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { editTodo, removeTodo } from "../slice/todoSlice";
 
 const Todolist = () => {
     const todos = useSelector((state) => state.todos.todos);
+    const isLoading = useSelector((state) => state.todo);
+    const dispatch = useDispatch();
+
     return (
-      <div>
-        {todos.map((todo) => (
-          <div key={todo.id}>{todo.content}</div>
-        ))}
-      </div>
+        <div>
+            {isLoading ? (
+                <div>loading...</div>
+            ) : (
+                    todos.map((todo) => (
+                        <div className="listBox">
+                            <input className="checkBox" type="checkbox" />
+                            <div className="listTodo" key={todo.id}>{todo.content}
+                                <span  >{todo.value}</span>
+                            </div>
+                            <div>
+                                <button className="editButton" onClick={() => dispatch(editTodo(todo.id))}>✏️</button>
+                                <button className="deleteButton" onClick={() => dispatch(removeTodo(todo.content))}>🗑️</button>
+                            </div>
+                    </div>
+                ))
+            )}
+        </div>
     );
 };
   

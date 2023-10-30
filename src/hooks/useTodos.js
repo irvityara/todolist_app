@@ -1,14 +1,14 @@
-import { useContext } from "react";
-import { TodosContext } from "../context/TodosContext";
+// import { useContext } from "react";
+// import { TodosContext } from "../context/TodosContext";
 
-const useTodos = () => {
-  const context = useContext(TodosContext);
+// const useTodos = () => {
+//   const context = useContext(TodosContext);
 
-  if (!context) {
-    throw new Error("useTodos must be used inside TodosProvider");
-  }
+//   if (!context) {
+//     throw new Error("useTodos must be used inside TodosProvider");
+//   }
 
-  return context;
-};
+//   return context;
+// };
 
-export default useTodos;
+// export default useTodos;
