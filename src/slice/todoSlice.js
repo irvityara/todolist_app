@@ -20,19 +20,21 @@ export const todoSlice = createSlice({
       state.todos = [...state.todos, newTodo];
     },
     removeTodo: (state, action) => {
-      state.todos = state.todos.filter((todo) => todo === action.payload.id);
+      state.todos = state.todos.filter((todo) => todo.id !== action.payload.id);
     },
-    editTodo: (state, action) => {
-        const editTodo = {
-          content: action.payload.text,
-        };
-        state.todos = [...state.todos, editTodo];
+      editTodo: (state, action) => {
+          const { id, text } = action.payload;
+          const editTodo = state.todos.filter((todo) => todo.id === id) ;
+          if (editTodo) {
+              editTodo.content = text;
+          }
+          state.todos = [...state.todos, editTodo];
       },
     
       //completeTodo
     toggleComplete: (state, action) => {
           state.todos = state.todos.map((todo) => {
-              if (todo.id === action.payload.id) {
+              if (todo.id === action.payload) {
                   return { ...todo, completed: !todo.completed };
               }
               return todo;

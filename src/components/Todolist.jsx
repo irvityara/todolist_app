@@ -11,6 +11,8 @@ const Todolist = () => {
 
     const currentTodos = filter === "ALL" ? todos : filteredTodos;
 
+    console.log((filter, filteredTodos));
+
     return (
         <div>
             {isLoading ? (
@@ -24,10 +26,10 @@ const Todolist = () => {
                                 <span style={{
                                     textDecoration: todo.completed ? "line-through" : "none"
                                 }}
-                                onClick={() => dispatch(searchTodo({filter : todo.id}))}>{todo.value}</span>
+                                onClick={() => dispatch(searchTodo({id : todo.id}))}>{todo.value}</span>
                             </div>
                             <div>
-                                <button className="editButton" onClick={() => dispatch(editTodo({ filter: todo.id }))}>✏️</button>
+                                <button className="editButton" onClick={() => dispatch(editTodo(todo.content))}>✏️</button>
                                 <button className="deleteButton" onClick={() => dispatch(removeTodo({ filter : todo.id }))}>🗑️</button>
                             </div>
                     </div>
