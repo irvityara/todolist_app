@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useTodos from "../hooks/useTodos";
-import Todolist from "../components/Todoslist";
+import Todolist from "../components/todolist";
+
 
 const TodoPage = () => {
   const [inputValue, setInputValue] = useState();
