@@ -6,18 +6,19 @@ const router = createBrowserRouter([
   {
     path: "/",
         element:
-            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "80px", marginBottom: "70px" }}>
+            <div style={{ display: "grid", justifyContent: "center", alignItems: "center", marginTop: "80px", marginBottom: "70px" }}>
                 <h1>What's the plan for today?</h1>
-            </div>,
+                <TodoPage />
+            </div>
   },
-  {
-    path: "/context",
-      element:
-          <div>
-              <TodoPage />,
-          </div>
+//   {
+//     path: "/context",
+//       element:
+//           <div>
+//               ,
+//           </div>
           
-  },
+//   },
 ]);
 
 export default router;

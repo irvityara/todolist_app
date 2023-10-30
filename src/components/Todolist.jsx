@@ -1,31 +1,43 @@
-import useTodos from "../hooks/useTodos";
+//context
+// import useTodos from "../hooks/useTodos";
 
+import { useSelector } from "react-redux";
 
 const Todolist = () => {
-    const { todos } = useTodos();
-
+    const todos = useSelector((state) => state.todos.todos);
     return (
-        <div>
-            <div className="listBox">
-                <div className="checkBox">
-                    <input type="checkbox" />
-                </div>
-                    {isLoading ? (
-                        <div>loading...</div>
-                    ) : (
-                        <div className="listTodo">
-                        {todos.map((todo) => (
-                            <div key={todo.id}>{todo.content}
-                                <span>{todo.value}</span>
-                                <button>Edit</button>
-                                <button>x</button>
-                            </div>
-                        ))}
-                    </div>   
-                    )}
-                </div>
-        </div>
-    )
-}
-
+      <div>
+        {todos.map((todo) => (
+          <div key={todo.id}>{todo.content}</div>
+        ))}
+      </div>
+    );
+};
+  
 export default Todolist;
+
+// context  
+// const Todolist = () => {
+//     const { isLoading, todos } = useTodos();
+
+//     return (
+//         <div>
+//             {isLoading ? (
+//                 <div>loading...</div>
+//             ) : (
+//                     todos.map((todo) => (
+//                         <div className="listBox">
+//                             <input className="checkBox" type="checkbox" />
+//                             <div className="listTodo" key={todo.id}>{todo.content}
+//                                 <span  >{todo.value}</span>
+//                             </div>
+//                             <div>
+//                                 <button className="editButton">✏️</button>
+//                                 <button className="deleteButton">🗑️</button>
+//                             </div>
+//                     </div>
+//                 ))
+//             )}
+//         </div>
+// )};
+

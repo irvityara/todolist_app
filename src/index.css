@@ -36,17 +36,20 @@ body{
 .listBox{
   display: flex;
   align-items: center;
+  justify-content: space-between;
   width:340px;
   height: 40px;
   border: solid #333 1px;
   padding:4px;
+  padding-right: 10px;
   margin-Bottom:20px;
 }
 .checkBox{
   width: 30px;
 }
 .listTodo{
-  width: 250px;
+  display: flex;
+  width: 200px;
 }
 .todoBox{
   display:flex;
