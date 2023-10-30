@@ -11,14 +11,6 @@ const router = createBrowserRouter([
                 <TodoPage />
             </div>
   },
-//   {
-//     path: "/context",
-//       element:
-//           <div>
-//               ,
-//           </div>
-          
-//   },
 ]);
 
 export default router;
